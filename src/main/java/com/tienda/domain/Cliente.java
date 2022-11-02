@@ -1,11 +1,7 @@
 package com.tienda.domain;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import lombok.Data;
 
 @Data
@@ -17,11 +13,17 @@ public class Cliente implements Serializable {
 
     @Id//Para mapear el ID de la llave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCliente;
+    @Column(name="id_cliente")
+    private Long idCliente;
+    
     String nombre;
     String apellidos;
     String correo;
     String telefono;
+    
+    @JoinColumn(name="id_credito", referencedColumnName="id_credito")
+    @ManyToONe//Se pone la relación
+    private Credito credito;
 
     public Cliente() {
     }
@@ -32,4 +34,13 @@ public class Cliente implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
     }
+
+    public Cliente(String nombre, String apellidos, String correo, String telefono, Credito credito) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.credito = credito;
+    }
+    
 }
