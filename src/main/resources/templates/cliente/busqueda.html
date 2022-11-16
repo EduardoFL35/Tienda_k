@@ -1,0 +1,25 @@
+
+<html>
+    <head>
+        <title>Busqueda</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="contenido">
+
+            <a th:href="@{/}">Regresar</a>
+            <form th:action="@{/cliente/busqueda}"
+                  method="get" 
+                  th:object="${cliente}"><!-- @{/cliente/guardar} tiene que ser igual al de ClienteController -->
+                <fieldset>
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" name="apellidos" th:field="*{apellidos}">                               
+                </fieldset>
+                <input type="submit" value="buscar" name="buscar">
+            </form>
+                
+        </div>
+    </body>
+</html>

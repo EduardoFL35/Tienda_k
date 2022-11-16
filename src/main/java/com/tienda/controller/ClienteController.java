@@ -4,6 +4,7 @@ import com.tienda.domain.Cliente;
 import com.tienda.service.ClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,32 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
+
+//    @GetMapping("/cliente/busqueda")
+//    public String buscarApellido(Model model) {
+//        var clientes=clienteService.buscarPorApellidos("Castro Mora");
+//        model.addAttribute("clientes", clientes);
+//        return "/cliente/busqueda";
+//    }
     
+    @GetMapping("/cliente/busqueda")
+    public String buscarApellido(Model model,@Param("apellidos")String apellidos) {
+              
+        var clientes=clienteService.buscarPorApellidos(apellidos);
+        model.addAttribute("clientes", clientes);
+        
+        return "/cliente/listado";
+    }
+    
+    @GetMapping("/cliente/buscar")
+    public String buscar(Cliente cliente){
+        return "/cliente/busqueda";
+    }
+
     @GetMapping("/cliente/listado")
-    public String listado(Model model){
-        var clientes=clienteService.getCliente();
+    public String listado(Model model) {
+        var clientes = clienteService.getCliente();
+        //var clientes=clienteService.buscarPorNombre("Ana");
         model.addAttribute("clientes", clientes);
         return "/cliente/listado";
     }

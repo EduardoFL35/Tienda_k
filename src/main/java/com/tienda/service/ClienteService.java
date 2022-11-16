@@ -15,4 +15,6 @@ public interface ClienteService {
     public void save(Cliente cliente);//Update
     
     public void delete(Cliente cliente);//Delete
+
+    public List<Cliente> buscarPorApellidos(String apellidos);
 }

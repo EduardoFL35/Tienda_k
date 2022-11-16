@@ -8,10 +8,10 @@ public interface CategoriaService {
     //Los métodos para hacer un CRUD de la tabla categoria
     //Create Read Update Delete
     
-    public List<Categoria> getCategoria();
+    public List<Categoria> getCategoria(boolean activos);
     
     //si es true
-    public Categoria getCategoria(boolean activos);//Read
+    public Categoria getCategoria(Categoria categoria);//Read
     
     public void save(Categoria categoria);//Update
     
