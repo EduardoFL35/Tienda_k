@@ -14,7 +14,7 @@ public class Categoria implements Serializable {
     @Id//Para mapear el ID de la llave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_categoria")
-    Long idCategoria;
+    private Long idCategoria;
     private String descripcion;
     private boolean activo;
     

@@ -8,7 +8,7 @@ public interface ArticuloService {
     //Los métodos para hacer un CRUD de la tabla articulo
     //Create Read Update Delete
     
-    public List<Articulo> getArticulo(boolean activos);
+    public List<Articulo> getArticulos(boolean activos);
     
     //Si son true me muestra todos los articulos que estan activos, si es false no los muestra
     public Articulo getArticulo(Articulo articulo);//Read

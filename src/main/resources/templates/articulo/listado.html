@@ -1,9 +1,8 @@
+
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
@@ -24,22 +23,22 @@
                         <td>[[${articulo.descripcion}]]</td>
                         <td style="text-align: right">[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
                         <td style="text-align: center">[[${articulo.existencias}]]</td>
-                        <td style="text-align: center"><input type="checkbox" 
-                                                              name="activo" 
-                                                              th:checked="${articulo.activo}" 
-                                                              disable="true"/>
+                        <td style="text-align: center">
+                            <input type="checkbox" 
+                                   name="activo" 
+                                   th:checked="${articulo.activo}" 
+                                   disable="true"/>
                         </td>
-                        <td><a th:href="@{/articulo/modificar/}+${articulo.idArticulo}">Eliminar</a></td>
+                        <td><a th:href="@{/articulo/eliminar/}+${articulo.idArticulo}">Eliminar</a></td>
                         <td><a th:href="@{/articulo/modificar/}+${articulo.idArticulo}">Modificar</a></td>
                     </tr>
                 </table>
             </div>
+
             <div th:if="${articulos == null or articulos.empty}">
                 <h2>No hay articulos que mostrar</h2>
             </div>
-            <!--Comentario-->
-            <footer th:replace="layout/plantilla :: footer"/>
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
-
 </html>

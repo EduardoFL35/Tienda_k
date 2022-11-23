@@ -18,8 +18,8 @@ public class CategoriaController {
     
     @GetMapping("/categoria/listado")
     public String listado(Model model){
-        var categorias=categoriaService.getCategoria(false);
-        model.addAttribute("categorias", categorias);
+        var categorias=categoriaService.getCategorias(false);
+        model.addAttribute("categorias",categorias);
         return "/categoria/listado";
     }
 
@@ -37,7 +37,7 @@ public class CategoriaController {
     @GetMapping("/categoria/modificar/{idCategoria}")//
     public String categoriaModificar(Categoria categoria, Model model) {
         categoria = categoriaService.getCategoria(categoria);
-        model.addAttribute("categoria", categoria);
+        model.addAttribute("categoria",categoria);
         return "/categoria/modificar";
     }
 

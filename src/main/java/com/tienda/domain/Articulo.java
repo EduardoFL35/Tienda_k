@@ -14,7 +14,7 @@ public class Articulo implements Serializable {
     @Id//Para mapear el ID de la llave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_articulo")
-    Long idArticulo;
+    private Long idArticulo;
     private Long idCategoria;
     private String descripcion;
     private String detalle;
@@ -25,7 +25,9 @@ public class Articulo implements Serializable {
     public Articulo() {
     }
 
-    public Articulo(Long idCategoria, String descripcion, String detalle, double precio, int existencias, boolean activo) {
+    public Articulo(Long idCategoria, String descripcion, 
+            String detalle, double precio,
+            int existencias, boolean activo) {
         this.idCategoria = idCategoria;
         this.descripcion = descripcion;
         this.detalle = detalle;

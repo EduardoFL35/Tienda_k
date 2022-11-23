@@ -22,10 +22,16 @@ public class ClienteServiceImpl implements ClienteService {
     public List<Cliente> buscarPorApellidos(String apellidos) {
         return (List<Cliente>) clienteDao.findByApellidos(apellidos);
     }
-    
+
     @Override
     @Transactional(readOnly = true)
-    public List<Cliente> getCliente() {
+    public List<Cliente> buscarPorNombre(String nombre) {
+        return (List<Cliente>) clienteDao.findByNombre(nombre);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Cliente> getClientes() {
         return (List<Cliente>) clienteDao.findAll();
     }
 

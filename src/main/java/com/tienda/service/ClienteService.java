@@ -8,7 +8,7 @@ public interface ClienteService {
     //Los métodos para hacer un CRUD de la tabla cliente
     //Create Read Update Delete
     
-    public List<Cliente> getCliente();
+    public List<Cliente> getClientes();
     
     public Cliente getCliente(Cliente cliente);//Read
     
@@ -17,4 +17,6 @@ public interface ClienteService {
     public void delete(Cliente cliente);//Delete
 
     public List<Cliente> buscarPorApellidos(String apellidos);
+    
+    public List<Cliente> buscarPorNombre(String nombre);
 }

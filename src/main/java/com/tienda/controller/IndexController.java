@@ -1,9 +1,6 @@
 package com.tienda.controller;
 
-import com.tienda.dao.ArticuloDao;
-import com.tienda.domain.Articulo;
 import com.tienda.service.ArticuloService;
-import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +16,7 @@ public class IndexController {
     
     @GetMapping("/")
     public String inicio(Model model){
-        var articulos=articuloService.getArticulo(true);
+        var articulos=articuloService.getArticulos(true);
         model.addAttribute("articulos", articulos);
         return "index";
     }

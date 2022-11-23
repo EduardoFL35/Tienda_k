@@ -16,31 +16,22 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
-
+    
 //    @GetMapping("/cliente/busqueda")
-//    public String buscarApellido(Model model) {
-//        var clientes=clienteService.buscarPorApellidos("Castro Mora");
-//        model.addAttribute("clientes", clientes);
+//    public String buscarApellido(Model model,@Param("apellidos")String apellidos) {              
+//        var clientes=clienteService.buscarPorApellidos(apellidos);
+//        model.addAttribute("clientes", clientes);       
+//        return "/cliente/listado";
+//    }
+//    
+//    @GetMapping("/cliente/buscar")
+//    public String buscar(Cliente cliente){
 //        return "/cliente/busqueda";
 //    }
     
-    @GetMapping("/cliente/busqueda")
-    public String buscarApellido(Model model,@Param("apellidos")String apellidos) {
-              
-        var clientes=clienteService.buscarPorApellidos(apellidos);
-        model.addAttribute("clientes", clientes);
-        
-        return "/cliente/listado";
-    }
-    
-    @GetMapping("/cliente/buscar")
-    public String buscar(Cliente cliente){
-        return "/cliente/busqueda";
-    }
-
     @GetMapping("/cliente/listado")
     public String listado(Model model) {
-        var clientes = clienteService.getCliente();
+        var clientes = clienteService.getClientes();
         //var clientes=clienteService.buscarPorNombre("Ana");
         model.addAttribute("clientes", clientes);
         return "/cliente/listado";

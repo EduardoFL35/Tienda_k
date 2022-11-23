@@ -1,9 +1,8 @@
+
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="css/menu.css" rel="stylesheet" type="text/css"/>    
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
@@ -13,7 +12,7 @@
             <div th:if="${categorias !=null and !categorias.empty}">
                 <table border="1">
                     <tr>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                         <th>Activa</th>
                         <th>Eliminar</th>
                         <th>Modificar</th>
@@ -26,7 +25,7 @@
                                    th:checked="${categoria.activo}" 
                                    disable="true"/>
                         </td>
-                        <td><a th:href="@{/categoria/modificar/}+${categoria.idCategoria}">Eliminar</td>
+                        <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}">Eliminar</td>
                         <td><a th:href="@{/categoria/modificar/}+${categoria.idCategoria}">Modificar</td>
                     </tr>
                 </table>
@@ -34,9 +33,7 @@
             <div th:if="${categorias == null or categorias.empty}">
                 <h2>No hay categorias que mostrar</h2>
             </div>
-            <!--Comentario-->
-            <footer th:replace="layout/plantilla :: footer"/>
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
-
 </html>
