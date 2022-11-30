@@ -33,6 +33,7 @@ public class ClienteController {
     public String listado(Model model) {
         var clientes = clienteService.getClientes();
         //var clientes=clienteService.buscarPorNombre("Ana");
+        
         model.addAttribute("clientes", clientes);
         return "/cliente/listado";
     }

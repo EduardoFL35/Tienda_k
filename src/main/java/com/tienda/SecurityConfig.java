@@ -1,18 +1,24 @@
 package com.tienda;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
+    @Autowired
+    private UserDetailsService userDetailsService;
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication().withUser("juan")
+       /*auth.inMemoryAuthentication().withUser("juan")
                 .password("{noop}123")
                 .roles("ADMIN","VENDEDOR","USER")
                 .and()
@@ -22,7 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .withUser("pedro")
                 .password("{noop}789")
-                .roles("USER");
+                .roles("USER");*/
+    
+    auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
     
     @Override
@@ -45,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                         "cliente/listado")
                 .hasAnyRole("ADMIN", "VENDEDOR")
                 .antMatchers("/")
-                .hasAnyRole("ADMIN", "VENDEDOR", "USER")
+                .hasAnyRole("ADMIN", "VENDEDOR")
                 .and()
                 .formLogin()
                 .loginPage("/login")
